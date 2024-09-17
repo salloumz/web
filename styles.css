@@ -362,18 +362,27 @@ footer {
 
 @media (max-width: 768px) {
     #resume .resume-container {
-        flex-direction: column; /* Stack the text and preview vertically */
+        flex-direction: column;
         padding: 0 5%;
     }
 
     .resume-preview {
-        margin-top: 20px; /* Add space above the PDF preview */
-        justify-content: center;
+        margin-top: 20px;
     }
 
     .resume-preview .resume-iframe {
-        width: 100%; /* Full width on small screens */
-        height: 400px; /* Adjust height for smaller screens */
-        min-width: 100%; /* Ensure it takes up all available space */
+        height: 300px; /* Smaller height on mobile */
+    }
+
+    .name-text {
+        font-size: 2rem; /* Further reduce for mobile */
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .resume-link img {
+        width: 100px; /* Further reduce image size for mobile */
     }
 }
