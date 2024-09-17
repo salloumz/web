@@ -1,0 +1,68 @@
+// Function to adjust the height of the particles container to match the total height of the sections
+function setParticleContainerHeight() {
+    var particlesContainer = document.getElementById('particles-js');
+    // Set the height of the particles container to the viewport height (not the body height)
+    particlesContainer.style.height = window.innerHeight + 'px';
+}
+
+// Adjust height on page load and window resize
+window.addEventListener('load', setParticleContainerHeight);
+window.addEventListener('resize', setParticleContainerHeight);
+
+// Function to add 'visible' class to sections when they come into view
+window.addEventListener('scroll', function () {
+    var sections = document.querySelectorAll('.section');
+    var triggerBottom = window.innerHeight / 1.3; // Adjust as needed for when the section should become visible
+
+    sections.forEach(function(section) {
+        var sectionTop = section.getBoundingClientRect().top;
+
+        // Add 'visible' class when the section is in view
+        if (sectionTop < triggerBottom) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
+});
+
+window.addEventListener('scroll', function() {
+    var scrollIndicator = document.querySelector('.scroll-indicator');
+    var scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var bottomReached = (window.scrollY + window.innerHeight) >= scrollableHeight;
+
+    if (bottomReached) {
+        scrollIndicator.classList.add('hidden');
+        
+    } else {
+        scrollIndicator.classList.remove('hidden');
+    }
+});
+
+// Function to add 'visible' class to sections when they come into view
+function handleScroll() {
+    var sections = document.querySelectorAll('.section');
+    var triggerBottom = window.innerHeight * 3; // Adjust to trigger visibility earlier
+
+    sections.forEach(function(section) {
+        var sectionTop = section.getBoundingClientRect().top;
+
+        // Add 'visible' class when the section is in view
+        if (sectionTop < triggerBottom) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
+}
+
+// Run the scroll handler on page load and when scrolling
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('load', handleScroll);
+
+
+
+// Load Particles.js and set particles to cover the viewport
+particlesJS.load('particles-js', 'particles.json', function() {
+  console.log('Particles.js config loaded');
+});

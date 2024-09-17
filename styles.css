@@ -1,0 +1,379 @@
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Body and Background */
+/* Enable scroll snapping */
+html, body {
+    height: 100%;
+    scroll-snap-type: y mandatory; /* Vertical scroll snap with mandatory snapping */
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll; /* Allow vertical scrolling */
+}
+
+body {
+	font-family: 'utopia-std', serif;
+	line-height: 1.6;
+	color: #fff;
+	overflow-x: hidden;
+	background-color: #000; /* Set background to black */
+	position: relative;
+}
+
+/* Fullscreen Particles Container */
+#particles-js {
+    position: fixed; /* Ensure it's fixed and doesn't affect scrolling */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Keep it covering the viewport without affecting scroll */
+    z-index: -1; /* Ensure it's behind other content */
+    background-size: cover; /* Ensure particles don't stretch */
+}
+
+/* Header and Hero Section Styling */
+header {
+	position: relative;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	scroll-snap-align: start; /* Snap this section to the start of the viewport */
+}
+
+.hero {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+/* Name Container */
+.name-container {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	text-align: left;
+}
+
+.name-text {
+	font-size: 4rem;
+	font-weight: bold;
+	font-style: italic;
+	background: #FFFFFF;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin: 0;
+}
+
+.subtitle {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+/* Section Styling */
+.section {
+    height: 100vh; /* Full height of viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(50px); /* Start below the viewport */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth fade and slide */
+    scroll-snap-align: start; /* Snap sections to the start of the viewport */
+}
+
+.section.visible {
+    opacity: 1; /* Become visible */
+    transform: translateY(0); /* Move into place */
+}
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.resume-link {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px 20px;
+	background: #FFFFFF;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+.resume-link:hover {
+	background: #ffcc00;
+	color: aliceblue
+}
+
+/* Contact Me Section Styling - Align to top-left like Resume Section */
+#contactme {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
+    z-index: 1;
+    scroll-snap-align: start; /* Snap the contact section to the start */
+}
+
+#contactme .container {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    text-align: left;
+}
+
+#contactme h2 {
+    font-size: 4rem; /* Match the resume title size */
+    font-weight: bold;
+    font-style: italic;
+    background: #FFFFFF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+#contactme p {
+    font-size: 1.5rem; /* Match the subtitle size */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Contact Info */
+.contact-info {
+	list-style: none;
+	margin-top: 20px;
+	padding: 0;
+}
+
+.contact-info li {
+	margin: 10px 0;
+}
+
+.contact-info a {
+	color: #ff0066;
+	text-decoration: none;
+}
+
+.contact-info a:hover {
+	text-decoration: underline;
+}
+
+/* Footer Styles */
+footer {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Scroll Down Indicator Styling */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1000;
+    color: #fff;
+    font-family: 'utopia-std', serif;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    visibility: visible; 
+}
+
+.scroll-indicator.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: none; /* Ensure this delay is here to allow the opacity to fade before hiding */
+}
+
+/* Arrow Style */
+.scroll-indicator .arrow {
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    transform: rotate(45deg);
+    animation: bounce 1s infinite;
+	color: #FFFFFF
+}
+
+/* Fade in/out effect */
+@keyframes fade {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Arrow bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(10px) rotate(45deg);
+    }
+}
+
+/* Resume Section Styling - Align to top-left like Hero Section */
+#resume {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    padding: 0;
+    z-index: 1;
+    scroll-snap-align: start;
+}
+
+#resume .resume-text, or another parent container selector {
+    display: flex;
+    justify-content: center; /* Center children horizontally */
+    align-items: center; /* Center children vertically */
+}
+
+/* Resume Text - anchored to top-left with padding */
+#resume .resume-text {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    position: absolute;
+    top: 50px; /* Padding from the top */
+    left: 5%; /* Adjust the left margin to create more space */
+    width: 40%; /* Text takes up less space to create more room for the preview */
+}
+
+#resume h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    font-style: italic;
+    background: #FFFFFF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px; /* Ensure spacing between the header and the download link */
+}
+#resume p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.resume-link {
+    display: flex; /* Enables flexbox for centering the image */
+    justify-content: center; /* Centers content horizontally within the link */
+    align-items: center; /* Centers content vertically within the link */
+    width: auto; /* Adjust width to fit content */
+    padding: 10px; /* Padding inside the link */
+    border-radius: 5px; /* Rounded corners for the link */
+    margin-top: 60px; /* Extra space above the link */
+}
+
+.resume-link img {
+    width: 150px; /* Width of the image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.resume-link:hover {
+    background-color: #ffcc00;
+    color: aliceblue;
+}
+
+/* Right Column: Resume PDF Preview */
+.resume-preview {
+    position: absolute;
+    top: 50px; /* Add padding from the top for the preview */
+    right: 5%; /* Align the preview to the right */
+    width: 45%; /* Ensure the PDF preview takes up the rest of the space */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.resume-preview .resume-iframe {
+    width: 100%;
+    height: 700px; /* Adjust height for better readability */
+    min-width: 600px; /* Set a minimum width for the preview */
+    max-width: 900px; /* Increased max-width for a wider display */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Resume Link Styling */
+.resume-link, .contact-info a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FFFFFF; /* Same background color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.resume-link:hover, .contact-info a:hover {
+    background-color: #ffcc00;
+    color: #000;
+}
+
+.linkedin img {
+	width: 150px; /* Width of the image */
+    height: 130px; /* Maintain aspect ratio */
+}
+
+.email img {
+	width: 150px; /* Width of the image */
+    height: 130px; /* Maintain aspect ratio */
+}
+
+.contact-buttons {
+	left: 10px;
+    display: flex;
+    flex-direction: row;  
+    justify-content: center;  
+    align-items: center;  
+    gap: 20px;
+}
+
+.contact-link {
+    padding: 10px 20px;
+    background-color: #ff0066;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.contact-link:hover {
+    background-color: #ffcc00; /* Changes background on hover */
+}
+
+@media (max-width: 768px) {
+    #resume .resume-container {
+        flex-direction: column; /* Stack the text and preview vertically */
+        padding: 0 5%;
+    }
+
+    .resume-preview {
+        margin-top: 20px; /* Add space above the PDF preview */
+        justify-content: center;
+    }
+
+    .resume-preview .resume-iframe {
+        width: 100%; /* Full width on small screens */
+        height: 400px; /* Adjust height for smaller screens */
+        min-width: 100%; /* Ensure it takes up all available space */
+    }
+}
