@@ -9,15 +9,16 @@
 /* Enable scroll snapping */
 html, body {
     height: 100%;
-    scroll-snap-type: y mandatory; /* Vertical scroll snap with mandatory snapping */
-    scroll-behavior: smooth; /* Smooth scrolling behavior */
+    scroll-snap-type: y mandatory; 
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
-    overflow-y: scroll; /* Allow vertical scrolling */
+    overflow-y: scroll;
 }
 
 body {
-	font-family: 'utopia-std', serif;
+	font-family: 'quicksand', sans-serif;
+	font-weight: 400;
 	line-height: 1.6;
 	color: #fff;
 	overflow-x: hidden;
