@@ -62,7 +62,7 @@ header {
 .name-container {
 	position: absolute;
 	top: 35%;
-	left: 10%;
+	left: 5%;
 	text-align: left;
 }
 
@@ -71,7 +71,6 @@ header {
 	font-weight: 400;
 	font-style: italic;
 	background: transparent;
-	margin: 0;
 }
 
 .name-text .intro {
@@ -85,8 +84,8 @@ header {
 
 .name-text .highlight {
 	
-	font-family: "brioso-pro", serif;
-	font-weight: 500;
+	font-family: "span", serif;
+	font-weight: 400;
 	font-style: italic;
 	font-size: 7.5rem;
 	
