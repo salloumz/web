@@ -1,30 +1,11 @@
-// Function to adjust the height of the particles container to match the total height of the sections
 function setParticleContainerHeight() {
     var particlesContainer = document.getElementById('particles-js');
-    // Set the height of the particles container to the viewport height (not the body height)
     particlesContainer.style.height = window.innerHeight + 'px';
 }
 
-// Adjust height on page load and window resize
 window.addEventListener('load', setParticleContainerHeight);
 window.addEventListener('resize', setParticleContainerHeight);
 
-// Function to add 'visible' class to sections when they come into view
-window.addEventListener('scroll', function () {
-    var sections = document.querySelectorAll('.section');
-    var triggerBottom = window.innerHeight / 1.3; // Adjust as needed for when the section should become visible
-
-    sections.forEach(function(section) {
-        var sectionTop = section.getBoundingClientRect().top;
-
-        // Add 'visible' class when the section is in view
-        if (sectionTop < triggerBottom) {
-            section.classList.add('visible');
-        } else {
-            section.classList.remove('visible');
-        }
-    });
-});
 
 window.addEventListener('scroll', function() {
     var scrollIndicator = document.querySelector('.scroll-indicator');
@@ -42,7 +23,7 @@ window.addEventListener('scroll', function() {
 // Function to add 'visible' class to sections when they come into view
 function handleScroll() {
     var sections = document.querySelectorAll('.section');
-    var triggerBottom = window.innerHeight * 3; // Adjust to trigger visibility earlier
+    var triggerBottom = window.innerHeight / 1.3; // Adjust to trigger visibility earlier
 
     sections.forEach(function(section) {
         var sectionTop = section.getBoundingClientRect().top;

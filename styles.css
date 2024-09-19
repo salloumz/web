@@ -17,6 +17,7 @@ html, body {
 }
 
 body {
+	font-family: "antipoda-variable", sans-serif;
 	font-weight: 100;
 	font-style: italic;
 	line-height: 1.6;
@@ -87,7 +88,7 @@ header {
 	font-family: "span", serif;
 	font-weight: 400;
 	font-style: italic;
-	font-size: 7.5rem;
+	font-size: 7rem;
 	
 }
 
@@ -99,23 +100,63 @@ header {
 
 /* Section Styling */
 .section {
-    height: 100vh; /* Full height of viewport */
+    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Hidden initially */
-    transform: translateY(50px); /* Start below the viewport */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth fade and slide */
-    scroll-snap-align: start; /* Snap sections to the start of the viewport */
+    opacity: 1;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+    scroll-snap-align: start;
 }
 
 .section.visible {
-    opacity: 1; /* Become visible */
-    transform: translateY(0); /* Move into place */
+    opacity: 1;
+    transform: translateY(0);
 }
 .container {
 	max-width: 800px;
 	margin: 0 auto;
+}
+
+.about-me {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    padding: 20px;
+    background-color: #333; 
+    color: #fff;
+    position: absolute;
+}
+
+.about-title {
+	
+	font-family: "span", serif;
+	text-align: left;
+	font-size: 5rem;
+    font-weight: bold;
+	top: 180px;
+	left: 340px;
+	position: absolute;
+
+}
+
+.about-textbox {
+    margin-top: -160px;
+	margin-left: -130px;/* Space between title and text */
+    max-width: 850px; /* Limit the width of the box */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent box */
+    text-align: left;
+    align-self: flex-end;
+	position: absolute;
+}
+
+.about-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+	font-style:  normal;
 }
 
 .resume-link {
@@ -153,7 +194,9 @@ header {
 }
 
 #contactme h2 {
-    font-size: 4rem; /* Match the resume title size */
+	
+	font-family: "span", serif;
+    font-size: 4rem;
     font-weight: bold;
     font-style: italic;
     background: #FFFFFF;
@@ -186,17 +229,6 @@ header {
 
 .contact-info a:hover {
 	text-decoration: underline;
-}
-
-/* Footer Styles */
-footer {
-    background: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
-    bottom: 0;
 }
 
 /* Scroll Down Indicator Styling */
@@ -261,7 +293,7 @@ footer {
     scroll-snap-align: start;
 }
 
-#resume .resume-text, or another parent container selector {
+#resume .resume-text {
     display: flex;
     justify-content: center; /* Center children horizontally */
     align-items: center; /* Center children vertically */
@@ -280,6 +312,7 @@ footer {
 }
 
 #resume h2 {
+	font-family: "span", serif;
     font-size: 4rem;
     font-weight: bold;
     font-style: italic;
@@ -376,6 +409,17 @@ footer {
 
 .contact-link:hover {
     background-color: #ffcc00; /* Changes background on hover */
+}
+
+/* Footer Styles */
+footer {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
 
 @media (max-width: 768px) {
