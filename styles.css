@@ -528,58 +528,194 @@ footer {
     margin-top: 40px;
 }
 
-/* General styles for smaller screens */
+/* Global mobile optimizations */
 @media (max-width: 768px) {
-    /* Adjust navbar for smaller screens */
-    .navbar .container {
-        justify-content: center; /* Center navbar items */
+    /* General body and container adjustments */
+    body {
+        font-size: 14px; /* Smaller base font size for readability on small screens */
+        padding: 0 10px; /* Add padding to prevent content from touching edges */
     }
 
-    /* Reduce font size of the main heading */
-    .main-heading {
-        font-size: 2rem; /* Smaller font size */
-    }
-
-    /* Adjust intro text */
-    .intro-text {
-        font-size: 1.2rem; /* Smaller font size */
-        margin-bottom: 40px; /* Reduce bottom margin */
-    }
-
-    /* Contact sections: Align vertically */
-    .contact-section {
-        flex-direction: column; /* Stack items vertically */
-        align-items: flex-start; /* Align items to the left */
-        gap: 10px; /* Less space between items */
-    }
-
-    /* Make buttons full-width for touch devices */
-    .email-link, .social-link {
-        display: block;
+    .container {
         width: 100%;
-        text-align: center;
-        font-size: 1.2rem; /* Smaller font size */
+        padding: 0 10px; /* Ensure content has breathing space on mobile */
     }
 
-    /* Section divider width adjustment */
-    .section-divider {
-        width: 80%; /* Make the lines shorter on smaller screens */
-        margin: 10px auto; /* Center the lines */
+    /* Navbar adjustments */
+    .navbar .container {
+        flex-direction: column;
+        align-items: center; /* Center navbar links for mobile */
     }
 
-    /* Reduce the height of the resume iframe */
-    .resume-preview .resume-iframe {
-        height: 400px; /* Adjust iframe height for smaller screens */
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px; /* Stack links vertically with space */
     }
 
-    /* Reduce the padding for sections */
-    .contact-container, .aboutme {
-        padding: 10px;
+    .navbar-link {
+        font-size: 1rem; /* Smaller font size for mobile */
+        padding: 10px 20px; /* Increase tap area for links */
     }
 
-    /* Reduce margin between sections */
+    /* Hero section (main name and intro text) */
+    .name-container {
+        top: 20%;
+    }
+
+    .name-text {
+        font-size: 3rem; /* Reduce main heading size */
+    }
+
+    .name-text .highlight {
+        font-size: 4rem; /* Adjust highlighted text size */
+    }
+
+    .intro {
+        font-size: 1.2rem; /* Adjust subtitle size */
+    }
+
+    /* Section adjustments (About, Resume, Contact) */
     .section {
+        height: auto; /* Allow sections to grow naturally on mobile */
+        padding: 40px 0;
         margin-bottom: 40px;
+    }
+
+    /* Contact and resume container adjustments */
+    .contact-container, .resume-container {
+        padding: 20px 10px;
+        margin: 0 auto;
+    }
+
+    /* Resume text and iframe adjustments */
+    .resume-preview .resume-iframe {
+        height: 300px; /* Reduce iframe size for smaller screens */
+    }
+
+    /* Main heading adjustments for sections */
+    .main-heading {
+        font-size: 2rem; /* Adjust for readability */
+        margin-bottom: 20px;
+    }
+
+    .intro-text {
+        font-size: 1rem; /* Adjust for smaller screens */
+        margin-bottom: 30px; /* Reduce margin to make space more compact */
+    }
+
+    /* Contact sections adjustments */
+    .contact-section {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the left on small screens */
+        gap: 15px; /* Reduce spacing */
+        width: 100%;
+    }
+
+    /* Contact section headings and buttons */
+    .contact-section h2 {
+        font-size: 1.4rem; /* Adjust heading size */
+        margin-bottom: 10px;
+    }
+
+    .email-link, .social-link {
+        font-size: 1rem; /* Reduce button font size */
+        width: 100%; /* Full width buttons for easy tap */
+        text-align: center; /* Center text within the buttons */
+    }
+
+    /* Adjust horizontal rules (dividers) */
+    .section-divider {
+        width: 70%;
+        margin: 20px auto; /* Center the dividers */
+    }
+
+    /* Scroll indicator adjustments */
+    .scroll-indicator {
+        font-size: 1rem; /* Smaller font for scrolling instructions */
+    }
+
+    .scroll-indicator .arrow {
+        width: 15px; /* Adjust arrow size */
+        height: 15px;
+    }
+
+    /* Footer adjustments */
+    footer {
+        font-size: 0.9rem;
+        margin-top: 20px;
+    }
+}
+
+/* Specific optimizations for iPhone 15 (and devices with widths up to 390px) */
+@media (max-width: 390px) {
+    /* General body and container adjustments */
+    body {
+        font-size: 12px; /* Smaller base font size for small screens */
+    }
+
+    /* Navbar adjustments */
+    .navbar .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 5px; /* Stack navbar links vertically with smaller gaps */
+    }
+
+    .navbar-link {
+        font-size: 0.9rem; /* Smaller text for links */
+        padding: 10px 15px; /* Adjust padding to fit smaller screens */
+    }
+
+    /* Hero section (main name and intro text) */
+    .name-container {
+        top: 15%; /* Adjust position for smaller screens */
+    }
+
+    .name-text {
+        font-size: 2rem; /* Reduce main heading size for small screens */
+    }
+
+    .name-text .highlight {
+        font-size: 2.5rem; /* Adjust highlighted text size */
+    }
+
+    .intro {
+        font-size: 1rem; /* Adjust subtitle size */
+    }
+
+    /* Main heading adjustments */
+    .main-heading {
+        font-size: 1.6rem; /* Reduce heading size further */
+    }
+
+    .intro-text {
+        font-size: 0.9rem; /* Smaller font size for intro text */
+        margin-bottom: 20px; /* Reduce bottom margin */
+    }
+
+    /* Contact sections adjustments */
+    .contact-section h2 {
+        font-size: 1.2rem; /* Reduce section heading size */
+        margin-bottom: 5px;
+    }
+
+    .email-link, .social-link {
+        font-size: 0.9rem; /* Smaller link font */
+    }
+
+    /* Section divider adjustments */
+    .section-divider {
+        width: 60%; /* Shorten divider width */
+        margin: 10px auto; /* Center with less margin */
+    }
+
+    /* Footer adjustments */
+    footer {
+        font-size: 0.8rem; /* Smaller footer text */
+        margin-top: 10px; /* Reduce footer margin */
     }
 }
 
@@ -611,3 +747,77 @@ footer {
         gap: 10px;
     }
 }
+
+/* iPhone 15 specific styles and similar devices */
+@media (max-width: 390px) {
+    /* Navbar adjustments for iPhone */
+    .navbar .container {
+        flex-direction: column; /* Stack navbar items vertically */
+        align-items: center; /* Center the navbar links */
+    }
+
+    .navbar-menu {
+        flex-direction: column; /* Stack navbar items vertically */
+        gap: 10px; /* Smaller gap between links */
+    }
+
+    /* Main heading adjustments */
+    .main-heading {
+        font-size: 1.8rem; /* Scale down the font size */
+        margin-bottom: 20px; /* Adjust bottom margin */
+    }
+
+    /* Intro text adjustments */
+    .intro-text {
+        font-size: 1.1rem; /* Smaller font size */
+        margin-bottom: 30px; /* Adjust bottom margin */
+    }
+
+    /* Contact sections: Align vertically */
+    .contact-section {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align text and buttons to the left */
+        gap: 10px; /* Less space between items */
+    }
+
+    /* Full-width buttons for easy tapping */
+    .email-link, .social-link {
+        display: block;
+        width: 100%; /* Full width buttons */
+        text-align: center; /* Center text inside buttons */
+        font-size: 1rem; /* Smaller font size */
+    }
+
+    /* Section divider adjustments */
+    .section-divider {
+        width: 70%; /* Shorter line for iPhone screen width */
+        margin: 10px auto; /* Center the lines */
+    }
+
+    /* Adjustments to resume iframe */
+    .resume-preview .resume-iframe {
+        height: 300px; /* Reduce iframe height for smaller screens */
+    }
+
+    /* Reduce padding for contact container */
+    .contact-container {
+        padding: 15px; /* Smaller padding for compact layout */
+    }
+
+    /* Adjust heading sizes */
+    .contact-section h2 {
+        font-size: 1.4rem; /* Smaller heading */
+    }
+
+    /* Reduce space between sections */
+    .section {
+        margin-bottom: 30px; /* Reduce bottom margin */
+    }
+
+    /* Footer adjustments */
+    footer {
+        font-size: 0.9rem; /* Smaller footer text */
+        margin-top: 20px; /* Less space at the bottom */
+    }
+}
+
