@@ -529,10 +529,8 @@ footer {
 }
 
 /* Global mobile optimizations */
-@media only screen and (-webkit-min-device-pixel-ratio: 3), 
-       only screen and (-min--moz-device-pixel-ratio: 3), 
-       only screen and (-o-min-device-pixel-ratio: 3/1), 
-       only screen and (min-device-pixel-ratio: 3) {
+@media only screen and (max-width: 390px) and (orientation: portrait)
+ {
     
     /* General body and container adjustments */
     body {
@@ -581,21 +579,21 @@ footer {
     /* About Me section adjustments */
     .about-title {
         font-size: 1.8rem; /* Adjust the title size */
-        text-align: center; /* Center the About title for mobile */
-        margin-top: 30px; /* Add spacing at the top */
-    }
+        top: 30px; /* Add spacing at the top */
+    	left: -10px;
+		   }
 
     .about-textbox {
-        margin-top: 10px;
-        margin-left: 0; /* Remove left margin to align text */
+		justify-content: right;
+        margin-top: 0px;
+        margin-left: 0px; /* Remove left margin to align text */
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.05); /* Slight background for readability */
         text-align: left; /* Align text to the left */
-        max-width: 100%; /* Ensure it uses full width on mobile */
+        max-width: 75%; /* Ensure it uses full width on mobile */
     }
 
     .about-text {
-        font-size: 1.1rem; /* Adjust text size for readability */
+        font-size: 9px; /* Adjust text size for readability */
         line-height: 1.6; /* Adjust line height for clarity */
         margin-bottom: 20px; /* Add some margin at the bottom */
     }
@@ -603,15 +601,28 @@ footer {
     /* Section adjustments (About, Resume, Contact) */
     .section {
         height: auto; /* Allow sections to grow naturally */
-        padding: 40px 0;
+        padding: 180px 0;
         margin-bottom: 40px;
     }
 
+	 #resume h2{
+		 
+		 font-size: 30px;
+		 
+	 }
+	 
     /* Resume text and iframe adjustments */
     .resume-preview .resume-iframe {
-        height: 300px; /* Reduce iframe size */
-		width: 150px;
+        height: 200px; /* Reduce iframe size */
+		width: 120px;
+		min-width: 100px;
+		max-width: 160px;
     }
+	 
+	 .resume-link img {
+    width: 60px; /* Width of the image */
+    height: auto; /* Maintain aspect ratio */
+}
 
     /* Main heading adjustments for sections */
     .main-heading {
