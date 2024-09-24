@@ -610,6 +610,7 @@ footer {
     /* Resume text and iframe adjustments */
     .resume-preview .resume-iframe {
         height: 300px; /* Reduce iframe size */
+		width: 150px;
     }
 
     /* Main heading adjustments for sections */
