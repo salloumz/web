@@ -528,29 +528,86 @@ footer {
     margin-top: 40px;
 }
 
+/* General styles for smaller screens */
 @media (max-width: 768px) {
-    #resume .resume-container {
-        flex-direction: column;
-        padding: 0 5%;
+    /* Adjust navbar for smaller screens */
+    .navbar .container {
+        justify-content: center; /* Center navbar items */
     }
 
-    .resume-preview {
-        margin-top: 20px;
+    /* Reduce font size of the main heading */
+    .main-heading {
+        font-size: 2rem; /* Smaller font size */
     }
 
+    /* Adjust intro text */
+    .intro-text {
+        font-size: 1.2rem; /* Smaller font size */
+        margin-bottom: 40px; /* Reduce bottom margin */
+    }
+
+    /* Contact sections: Align vertically */
+    .contact-section {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+        gap: 10px; /* Less space between items */
+    }
+
+    /* Make buttons full-width for touch devices */
+    .email-link, .social-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem; /* Smaller font size */
+    }
+
+    /* Section divider width adjustment */
+    .section-divider {
+        width: 80%; /* Make the lines shorter on smaller screens */
+        margin: 10px auto; /* Center the lines */
+    }
+
+    /* Reduce the height of the resume iframe */
     .resume-preview .resume-iframe {
-        height: 300px;
+        height: 400px; /* Adjust iframe height for smaller screens */
     }
 
-    .name-text {
-        font-size: 2rem;
+    /* Reduce the padding for sections */
+    .contact-container, .aboutme {
+        padding: 10px;
     }
 
-    .subtitle {
+    /* Reduce margin between sections */
+    .section {
+        margin-bottom: 40px;
+    }
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+    .main-heading {
+        font-size: 1.5rem; /* Even smaller for very small screens */
+    }
+
+    .intro-text {
         font-size: 1rem;
     }
 
-    .resume-link img {
-        width: 100px;
+    .contact-section h2 {
+        font-size: 1.2rem; /* Smaller heading */
+    }
+
+    .email-link, .social-link {
+        font-size: 1rem; /* Smaller link text */
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
     }
 }
