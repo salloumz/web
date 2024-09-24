@@ -143,11 +143,11 @@ header {
 }
 
 .about-textbox {
-    margin-top: -160px;
+    margin-top: -220px;
 	margin-left: -130px;/* Space between title and text */
     max-width: 850px; /* Limit the width of the box */
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent box */
+    background-color: rgba(255, 255, 255, 0.0); /* Semi-transparent box */
     text-align: left;
     align-self: flex-end;
 	position: absolute;
@@ -161,7 +161,7 @@ header {
 
 .resume-link {
 	display: inline-block;
-	margin-top: 20px;
+	margin-top: 50px;
 	padding: 10px 20px;
 	background: #FFFFFF;
 	color: #fff;
@@ -206,7 +206,7 @@ header {
 }
 
 #contactme p {
-    font-size: 1.5rem; /* Match the subtitle size */
+    font-size: 1.4rem; /* Match the subtitle size */
     font-weight: bold;
     margin-top: 10px;
 }
@@ -395,7 +395,7 @@ header {
 .contact-buttons {
     display: flex;
     flex-direction: row;  
-    justify-content: center;  
+    justify-content: left;  
     align-items: center;  
     gap: 50px;
 }
