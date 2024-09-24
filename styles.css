@@ -573,6 +573,12 @@ footer {
         font-size: 4rem; /* Adjust highlighted text size */
     }
 
+	.about-title{
+			   
+		font-size: 1.2rem;
+			   
+	}
+		   
     .intro {
         font-size: 1.2rem; /* Adjust subtitle size */
     }
