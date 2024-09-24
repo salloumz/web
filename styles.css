@@ -533,21 +533,22 @@ footer {
        only screen and (-min--moz-device-pixel-ratio: 3), 
        only screen and (-o-min-device-pixel-ratio: 3/1), 
        only screen and (min-device-pixel-ratio: 3) {
+    
     /* General body and container adjustments */
     body {
-        font-size: 14px; /* Smaller base font size for readability on small screens */
-        padding: 0 10px; /* Add padding to prevent content from touching edges */
+        font-size: 14px; /* Smaller base font size */
+        padding: 0 10px; /* Prevent content from touching edges */
     }
 
     .container {
         width: 100%;
-        padding: 0 10px; /* Ensure content has breathing space on mobile */
+        padding: 0 10px; /* Breathing space for mobile */
     }
 
     /* Navbar adjustments */
     .navbar .container {
         flex-direction: column;
-        align-items: center; /* Center navbar links for mobile */
+        align-items: center; /* Center navbar links */
     }
 
     .navbar-menu {
@@ -573,32 +574,42 @@ footer {
         font-size: 4rem; /* Adjust highlighted text size */
     }
 
-	.about-title{
-			   
-		font-size: 1.2rem;
-			   
-	}
-		   
     .intro {
         font-size: 1.2rem; /* Adjust subtitle size */
     }
 
+    /* About Me section adjustments */
+    .about-title {
+        font-size: 1.8rem; /* Adjust the title size */
+        text-align: center; /* Center the About title for mobile */
+        margin-top: 30px; /* Add spacing at the top */
+    }
+
+    .about-textbox {
+        margin-top: 10px;
+        margin-left: 0; /* Remove left margin to align text */
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.05); /* Slight background for readability */
+        text-align: left; /* Align text to the left */
+        max-width: 100%; /* Ensure it uses full width on mobile */
+    }
+
+    .about-text {
+        font-size: 1.1rem; /* Adjust text size for readability */
+        line-height: 1.6; /* Adjust line height for clarity */
+        margin-bottom: 20px; /* Add some margin at the bottom */
+    }
+
     /* Section adjustments (About, Resume, Contact) */
     .section {
-        height: auto; /* Allow sections to grow naturally on mobile */
+        height: auto; /* Allow sections to grow naturally */
         padding: 40px 0;
         margin-bottom: 40px;
     }
 
-    /* Contact and resume container adjustments */
-    .contact-container, .resume-container {
-        padding: 20px 10px;
-        margin: 0 auto;
-    }
-
     /* Resume text and iframe adjustments */
     .resume-preview .resume-iframe {
-        height: 300px; /* Reduce iframe size for smaller screens */
+        height: 300px; /* Reduce iframe size */
     }
 
     /* Main heading adjustments for sections */
@@ -609,14 +620,14 @@ footer {
 
     .intro-text {
         font-size: 1rem; /* Adjust for smaller screens */
-        margin-bottom: 30px; /* Reduce margin to make space more compact */
+        margin-bottom: 30px;
     }
 
     /* Contact sections adjustments */
     .contact-section {
         flex-direction: column;
-        align-items: flex-start; /* Align items to the left on small screens */
-        gap: 15px; /* Reduce spacing */
+        align-items: flex-start; /* Align items to the left */
+        gap: 15px;
         width: 100%;
     }
 
@@ -627,24 +638,24 @@ footer {
     }
 
     .email-link, .social-link {
-        font-size: 1rem; /* Reduce button font size */
+        font-size: 1rem;
         width: 100%; /* Full width buttons for easy tap */
-        text-align: center; /* Center text within the buttons */
+        text-align: center;
     }
 
     /* Adjust horizontal rules (dividers) */
     .section-divider {
         width: 70%;
-        margin: 20px auto; /* Center the dividers */
+        margin: 20px auto;
     }
 
     /* Scroll indicator adjustments */
     .scroll-indicator {
-        font-size: 1rem; /* Smaller font for scrolling instructions */
+        font-size: 1rem;
     }
 
     .scroll-indicator .arrow {
-        width: 15px; /* Adjust arrow size */
+        width: 15px;
         height: 15px;
     }
 
