@@ -545,12 +545,12 @@ footer {
 
     /* Navbar adjustments */
     .navbar .container {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center; /* Center navbar links */
     }
 
     .navbar-menu {
-        flex-direction: column;
+        flex-direction: row;
         gap: 10px; /* Stack links vertically with space */
     }
 
@@ -561,7 +561,7 @@ footer {
 
     /* Hero section (main name and intro text) */
     .name-container {
-        top: 20%;
+        top: 30%;
     }
 
     .name-text {
@@ -579,17 +579,17 @@ footer {
     /* About Me section adjustments */
     .about-title {
         font-size: 1.8rem; /* Adjust the title size */
-        top: 30px; /* Add spacing at the top */
-    	left: -10px;
+        top: 190px; /* Add spacing at the top */
+    	left: 10px;
 		   }
 
     .about-textbox {
 		justify-content: right;
-        margin-top: 0px;
+        margin-top: 40px;
         margin-left: 0px; /* Remove left margin to align text */
         padding: 20px;
         text-align: left; /* Align text to the left */
-        max-width: 75%; /* Ensure it uses full width on mobile */
+        max-width: 100%; /* Ensure it uses full width on mobile */
     }
 
     .about-text {
@@ -602,7 +602,7 @@ footer {
     .section {
         height: auto; /* Allow sections to grow naturally */
         padding: 180px 0;
-        margin-bottom: 40px;
+        margin-bottom: 170px;
     }
 
 	 #resume h2{
@@ -611,18 +611,35 @@ footer {
 		 
 	 }
 	 
-    /* Resume text and iframe adjustments */
+	.resume-preview {
+		top: 150px;
+        position: relative;
+        width: 100%;
+        margin-top: 20px; /* Add margin to move it below the download button */
+        right: 0; /* Reset alignment */
+    }
+
     .resume-preview .resume-iframe {
-        height: 200px; /* Reduce iframe size */
-		width: 120px;
-		min-width: 100px;
-		max-width: 160px;
+        width: 100%;
+        height: auto; /* Let the iframe height adjust automatically */
+        min-width: 100%; 
+        max-width: 100%; /* Make it full-width */
     }
 	 
 	 .resume-link img {
     width: 60px; /* Width of the image */
     height: auto; /* Maintain aspect ratio */
 }
+	 
+	 #resume .resume-text {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        width: 95%; /* Full width for alignment */
+        text-align: center; 
+        margin-top: 40px; 
+    }
 
     /* Main heading adjustments for sections */
     .main-heading {
