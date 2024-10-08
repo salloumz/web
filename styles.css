@@ -654,11 +654,13 @@ footer {
 
     /* Contact sections adjustments */
     .contact-section {
-        flex-direction: column;
-        align-items: flex-start; /* Align items to the left */
-        gap: 15px;
-        width: 100%;
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+	width: 100%;
+}
 
     /* Contact section headings and buttons */
     .contact-section h2 {
