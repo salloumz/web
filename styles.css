@@ -368,7 +368,7 @@ header {
     background: #FFFFFF;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px; /* Ensure spacing between the header and the download link */
+    margin-bottom: 20px;
 }
 #resume p {
     font-size: 1.5rem;
