@@ -43,8 +43,9 @@ window.addEventListener('load', handleScroll);
 
 
 
+
 // Load Particles.js and set particles to cover the viewport
-particlesJS.load('particles-js', 'particles.json', function() {
+particlesJS.load('particles-js', 'assets/particles.json', function() {
   console.log('Particles.js config loaded');
 });
     

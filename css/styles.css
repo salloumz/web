@@ -127,27 +127,27 @@ header {
 }
 
 .name-text .intro {
-	
-	color: #FFFFFF;
-	font-family: "antipoda-variable", sans-serif;
-	font-variation-settings: "wdth" 90, "wght" 300;
-	font-style: normal;
-	
+    
+    color: #FFFFFF;
+    font-family: "antipoda-variable", sans-serif;
+    font-variation-settings: "wdth" 90, "wght" 300;
+    font-style: normal;
+    
 }
 
 .name-text .highlight {
-	
-	font-family: "span", serif;
-	font-weight: 400;
-	font-style: italic;
-	font-size: 7rem;
-	
+    
+    font-family: "span", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 7rem;
+    
 }
 
 .subtitle {
-	font-size: 1.5rem;
-	font-weight: bold;
-	margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 /* Section Styling */
@@ -168,14 +168,14 @@ header {
     transform: translateY(0);
 }
 .container {
-	max-width: 800px;
-	margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-me,
 .aboutme,
 #about-me {
-	
+    
     width: 100%;
     min-height: 100vh;
     display: block;
@@ -186,7 +186,7 @@ header {
 }
 
 .about-title {
-	
+    
     margin-top: 0;
     font-family: "span", serif;
     text-align: left;
@@ -240,8 +240,8 @@ header {
 }
 
 #contactme h2 {
-	
-	font-family: "span", serif;
+    
+    font-family: "span", serif;
     font-size: 4rem;
     font-weight: bold;
     font-style: italic;
@@ -260,8 +260,8 @@ header {
 }
 
 #contact-page h2 {
-	
-	font-family: "span", serif;
+    
+    font-family: "span", serif;
     font-size: 4rem;
     font-weight: bold;
     font-style: italic;
@@ -275,22 +275,22 @@ header {
 
 /* Contact Info */
 .contact-info {
-	list-style: none;
-	margin-top: 20px;
-	padding: 0;
+    list-style: none;
+    margin-top: 20px;
+    padding: 0;
 }
 
 .contact-info li {
-	margin: 10px 0;
+    margin: 10px 0;
 }
 
 .contact-info a {
-	color: #ff0066;
-	text-decoration: none;
+    color: #ff0066;
+    text-decoration: none;
 }
 
 .contact-info a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* Scroll Down Indicator Styling */
@@ -326,7 +326,7 @@ header {
     border-bottom: 2px solid #FFFFFF;
     transform: rotate(45deg);
     animation: bounce 1s infinite;
-	color: #FFFFFF
+    color: #FFFFFF
 }
 
 /* Fade in/out effect */
@@ -507,12 +507,12 @@ header {
 }
 
 .linkedin img {
-	width: 150px;
+    width: 150px;
     height: 130px;
 }
 
 .email img {
-	width: 150px;
+    width: 150px;
     height: 130px;
 }
 
@@ -565,13 +565,13 @@ header {
 }
 
 .contact-section {
-	
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-	width: 100%;
+    width: 100%;
 }
 
 .contact-section h2, .contact-section p {
@@ -580,7 +580,7 @@ header {
 }
 
 .contact-section h2 {
-	font-family: "span", serif;
+    font-family: "span", serif;
     font-size: 36px;
     color: #FFFFFF;
     display: inline-block;
@@ -588,7 +588,7 @@ header {
 }
 
 .email-link, .social-link {
-	font-family: "span", serif;
+    font-family: "span", serif;
     font-size: 20px;
     color: #FFFFFF;
     text-decoration: none;
@@ -597,7 +597,7 @@ header {
 }
 
 footer {
-	font-family: "span", serif;
+    font-family: "span", serif;
     font-size: 16px;
     color: #FFFFFF;
     margin-top: 40px;
