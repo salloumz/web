@@ -390,6 +390,7 @@ header {
     font-weight: bold;
     font-style: italic;
     background: #FFFFFF;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
