@@ -6,13 +6,27 @@
     left: 0;
     z-index: 10;
     padding: 10px 0;
+    background: transparent;
+}
+
+:root {
+    --bg-color: #000;
+    --accent: #ffcc00;
+    --muted-white: rgba(255,255,255,0.95);
+    --max-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 .navbar .container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    max-width: 1800px;
+    max-width: var(--max-width);
     margin: 0 auto;
 
 }
@@ -29,8 +43,8 @@
     font-family: "span", serif;
     color: white;
     text-decoration: none;
-    font-size: 1.5rem;
-    padding: 5px 10px;
+    font-size: clamp(1rem, 1.6vw, 1.6rem);
+    padding: 6px 12px;
 }
 
 .navbar-link:hover {
@@ -44,69 +58,72 @@
 /* Enable scroll snapping */
 html, body {
     height: 100%;
-    scroll-snap-type: y mandatory; 
+    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-	font-family: "antipoda-variable", sans-serif;
-	font-weight: 100;
-	font-style: italic;
-	line-height: 1.6;
-	color: #fff;
-	overflow-x: hidden;
-	background-color: #000;
-	position: relative;
+    font-family: "antipoda-variable", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--muted-white);
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    position: relative;
 }
 
 /* Fullscreen Particles Container */
 #particles-js {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh; 
+    height: 100vh;
     z-index: -1;
     background-size: cover;
+    pointer-events: none; /* allow clicks through particles */
 }
 
 /* Header and Hero Section Styling */
 header {
-	position: relative;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	scroll-snap-align: start; /* Snap this section to the start of the viewport */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    scroll-snap-align: start;
+    padding: 8vh 5vw; /* keep content away from edges */
 }
 
 .hero {
-	position: relative;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	padding-left: 5%;
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
 }
 
 /* Name Container */
 .name-container {
-	position: absolute;
-	top: 28%;
-	left: 5%;
-	text-align: left;
+    position: relative;
+    margin: 0;
+    text-align: left;
 }
 
 .name-text {
-	font-size: 6rem;
-	font-weight: 400;
-	font-style: italic;
-	background: transparent;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    font-weight: 400;
+    font-style: italic;
+    background: transparent;
+    line-height: 0.95;
 }
 
 .name-text .intro {
@@ -135,14 +152,15 @@ header {
 
 /* Section Styling */
 .section {
-    height: 100vh; 
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 1;
+    opacity: 0;
     transform: translateY(10px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     scroll-snap-align: start;
+    padding: 6vh 4vw;
 }
 
 .section.visible {
@@ -154,56 +172,53 @@ header {
 	margin: 0 auto;
 }
 
-.about-me {
+.about-me,
+.aboutme,
+#about-me {
 	
-    height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; 
-    padding: 20px;
-    background-color: #333; 
-    color: #fff;
-    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+    padding: 8vh 5vw;
+    background-color: transparent;
+    color: var(--muted-white);
+    position: relative;
 }
 
 .about-title {
 	
-	margin-top: -20px;
-	font-family: "span", serif;
-	text-align: left;
-	font-size: 5rem;
+    margin-top: 0;
+    font-family: "span", serif;
+    text-align: left;
+    font-size: clamp(2rem, 5vw, 4.2rem);
     font-weight: bold;
-	top: 180px;
-	left: 340px;
-	position: absolute;
+    position: relative;
 
 }
 
 .about-textbox {
-    margin-top: -250px;
-	margin-left: -150px;/* Space between title and text */
-    max-width: 850px; /* Limit the width of the box */
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.0); /* Semi-transparent box */
+    margin-top: 20px;
+    max-width: 900px;
+    padding: 8px 0;
+    background-color: transparent;
     text-align: left;
-    align-self: flex-end;
-	position: absolute;
+    position: relative;
 }
 
 .about-text {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
     line-height: 1.8;
-	font-style:  normal;
+    font-style: normal;
 }
 
 .resume-link {
-	display: inline-block;
-	margin-top: 50px;
-	padding: 10px 20px;
-	background: #FFFFFF;
-	color: #fff;
-	text-decoration: none;
-	border-radius: 5px;
+    display: inline-block;
+    margin-top: 40px;
+    padding: 8px 16px;
+    background: #FFFFFF;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 .resume-link:hover {
@@ -214,13 +229,13 @@ header {
 /* Contact Me Section Styling - Align to top-left like Resume Section */
 #contactme {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 0;
+    padding: 6vh 5vw;
     z-index: 1;
-    scroll-snap-align: start; /* Snap the contact section to the start */
+    scroll-snap-align: start;
 }
 
 #contactme .container {
@@ -237,7 +252,9 @@ header {
     font-weight: bold;
     font-style: italic;
     background: #FFFFFF;
+    background-clip: text;
     -webkit-background-clip: text;
+    color: transparent;
     -webkit-text-fill-color: transparent;
     margin: 0;
 }
@@ -255,7 +272,9 @@ header {
     font-weight: bold;
     font-style: italic;
     background: #FFFFFF;
+    background-clip: text;
     -webkit-background-clip: text;
+    color: transparent;
     -webkit-text-fill-color: transparent;
     margin: 0;
 }
@@ -366,7 +385,9 @@ header {
     font-weight: bold;
     font-style: italic;
     background: #FFFFFF;
+    background-clip: text;
     -webkit-background-clip: text;
+    color: transparent;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
 }
@@ -398,22 +419,21 @@ header {
 
 
 .resume-preview {
-    position: absolute;
-    top: 90px; 
-    right: 5%; 
-    width: 45%; 
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto 0 auto;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .resume-preview .resume-iframe {
     width: 100%;
-    height: 700px; 
-    min-width: 600px; 
-    max-width: 900px; 
+    height: min(70vh, 900px);
     border: 1px solid #ccc;
     border-radius: 8px;
 }
+/* duplicate old iframe rules removed (now using responsive rules above) */
 
 /* Resume Link Styling */
 .resume-link, .contact-info a {
@@ -468,17 +488,17 @@ header {
 }
 
 .main-heading {
-	font-family: "span", serif;
-    font-size: 100px;
-    color: #FFFFFF;
+    font-family: "span", serif;
+    font-size: clamp(2rem, 8vw, 6rem);
+    color: var(--muted-white);
     margin-bottom: 20px;
 }
 
 .intro-text {
-	font-family: "span", serif;
-    font-size: 25px;
-    color: white;
-    margin-bottom: 120px;
+    font-family: "span", serif;
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
+    color: var(--muted-white);
+    margin-bottom: 60px;
 }
 
 .section-divider {
@@ -575,110 +595,7 @@ footer {
     .intro {
         font-size: 1.2rem; /* Adjust subtitle size */
     }
-
-    /* About Me section adjustments */
-    .about-title {
-        font-size: 1.8rem; /* Adjust the title size */
-        top: 190px; /* Add spacing at the top */
-    	left: 10px;
-		   }
-
-    .about-textbox {
-		justify-content: right;
-        margin-top: 40px;
-        margin-left: 0px; /* Remove left margin to align text */
-        padding: 20px;
-        text-align: left; /* Align text to the left */
-        max-width: 100%; /* Ensure it uses full width on mobile */
-    }
-
-    .about-text {
-        font-size: 9px; /* Adjust text size for readability */
-        line-height: 1.6; /* Adjust line height for clarity */
-        margin-bottom: 20px; /* Add some margin at the bottom */
-    }
-
-    /* Section adjustments (About, Resume, Contact) */
-    .section {
-        height: auto; /* Allow sections to grow naturally */
-        padding: 180px 0;
-        margin-bottom: 170px;
-    }
-
-	 #resume h2{
-		 
-		 font-size: 30px;
-		 
-	 }
-	 
-	.resume-preview {
-		top: 150px;
-        position: relative;
-        width: 100%;
-        margin-top: 20px; /* Add margin to move it below the download button */
-        right: 0; /* Reset alignment */
-    }
-
-    .resume-preview .resume-iframe {
-        width: 100%;
-        height: auto; /* Let the iframe height adjust automatically */
-        min-width: 100%; 
-        max-width: 100%; /* Make it full-width */
-    }
-	 
-	 .resume-link img {
-    width: 60px; /* Width of the image */
-    height: auto; /* Maintain aspect ratio */
-}
-	 
-	 #resume .resume-text {
-        display: flex;
-        flex-direction: column; /* Stack elements vertically */
-        justify-content: center; /* Center vertically */
-        align-items: center; /* Center horizontally */
-        width: 95%; /* Full width for alignment */
-        text-align: center; 
-        margin-top: 40px; 
-    }
-
-    /* Main heading adjustments for sections */
-    .main-heading {
-        font-size: 2rem; /* Adjust for readability */
-        margin-bottom: 20px;
-    }
-
-    .intro-text {
-        font-size: 1rem; /* Adjust for smaller screens */
-        margin-bottom: 30px;
-    }
-
-    /* Contact sections adjustments */
-    .contact-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-	width: 100%;
-}
-
-    /* Contact section headings and buttons */
-    .contact-section h2 {
-        font-size: 1.4rem; /* Adjust heading size */
-        margin-bottom: 10px;
-    }
-
-    .email-link, .social-link {
-        font-size: 1rem;
-        width: 100%; /* Full width buttons for easy tap */
-        text-align: center;
-    }
-
-    /* Adjust horizontal rules (dividers) */
-    .section-divider {
-        width: 70%;
-        margin: 20px auto;
-    }
+    
 
     /* Scroll indicator adjustments */
     .scroll-indicator {
