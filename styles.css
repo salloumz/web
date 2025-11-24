@@ -211,31 +211,25 @@ header {
     font-style: normal;
 }
 
-.resume-link {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 8px 16px;
-    background: #FFFFFF;
-    color: #000;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.resume-link:hover {
-	background: #ffcc00;
-	color: aliceblue
-}
-
-/* Contact Me Section Styling - Align to top-left like Resume Section */
-#contactme {
+.resume-preview {
     position: relative;
-    min-height: 100vh;
+    width: 100%;
+    max-width: 900px;
+    margin: 8px auto 0 auto;
+    /* increase preview height so more of the PDF is visible */
+    height: 92vh; /* desktop: taller */
+    max-height: none;
+    overflow: hidden;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 6vh 5vw;
-    z-index: 1;
-    scroll-snap-align: start;
+    justify-content: center;
+}
+
+.resume-preview .resume-iframe {
+    width: 100%;
+    height: 92vh;
+    max-height: none; /* match container */
+    border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
 #contactme .container {
@@ -351,43 +345,52 @@ header {
     }
 }
 
-/* Resume Section Styling - Align to top-left like Hero Section */
+/* Resume Section Styling - make responsive and avoid absolute positioning */
 #resume {
     position: relative;
-    height: 100vh;
-    display: flex;
-    padding: 0;
+    min-height: 100vh;
+    display: block;
+    padding: 6vh 5vw;
     z-index: 1;
     scroll-snap-align: start;
 }
 
-#resume .resume-text {
+/* layout container specific to resume; use flex to position text + preview */
+.resume-container {
     display: flex;
-    justify-content: center; /* Center children horizontally */
-    align-items: center; /* Center children vertically */
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
 }
 
-/* Resume Text - anchored to top-left with padding */
-#resume .resume-text {
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    position: absolute;
-    top: 50px; /* Padding from the top */
-    left: 5%; /* Adjust the left margin to create more space */
-    width: 40%; /* Text takes up less space to create more room for the preview */
+.resume-text {
+    width: 100%;
+    max-width: 640px;
+    padding-right: 0;
 }
 
+/* Resume heading — controlled by #resume h2 (original styling restored below) */
+
+/* Put heading and download thumbnail side-by-side */
+.resume-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.resume-text h2 { margin: 0; }
+
+/* Restoring original #resume heading style from initial file */
 #resume h2 {
-	font-family: "span", serif;
+    font-family: "span", serif;
     font-size: 4rem;
     font-weight: bold;
     font-style: italic;
     background: #FFFFFF;
-    background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
 }
@@ -408,9 +411,26 @@ header {
 }
 
 .resume-link img {
-    width: 150px; /* Width of the image */
+    width: auto; /* let max-width control size */
+    max-width: 150px; /* desktop cap */
     height: auto; /* Maintain aspect ratio */
+    display: block;
 }
+
+/* Resume actions (download thumbnail + view button) */
+.resume-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.resume-download {
+    display: inline-block;
+    background-color: #fff;
+    padding: 6px;
+    border-radius: 6px;
+}
+.resume-download img { display: block; max-width: 70px; height: auto; border-radius: 6px; }
+.resume-download { padding: 4px; }
 
 .resume-link:hover {
     background-color: #ffcc00;
@@ -422,18 +442,52 @@ header {
     position: relative;
     width: 100%;
     max-width: 900px;
-    margin: 20px auto 0 auto;
+    margin: 8px auto 0 auto;
+    /* increase preview height so more of the PDF is visible */
+    max-height: 1000px; /* desktop: taller */
+    overflow: hidden;
     display: flex;
     justify-content: center;
 }
 
 .resume-preview .resume-iframe {
     width: 100%;
-    height: min(70vh, 900px);
+    height: 100%;
+    max-height: 1000px; /* match container */
     border: 1px solid #ccc;
     border-radius: 8px;
 }
 /* duplicate old iframe rules removed (now using responsive rules above) */
+
+/* Ensure sections are visible on small devices even if JS visibility toggles don't run */
+@media (max-width: 600px) {
+    .section {
+        opacity: 1;
+        transform: none;
+        padding: 4vh 4vw;
+    }
+    .resume-container { flex-direction: column; }
+    .resume-text, .resume-preview { width: 100%; max-width: 100%; }
+    .resume-preview { display: flex; height: 82vh; max-height: none; }
+    .resume-preview .resume-iframe { height: 300px; max-height: none; }
+    /* make download button smaller and reduce padding on small screens */
+    .resume-link { padding: 6px 10px; margin-top: 18px; }
+    .resume-link img { max-width: 90px; }
+    .resume-download img { max-width: 90px; }
+    .resume-view { padding: 6px 10px; }
+
+    /* Stack heading and thumbnail on small screens */
+    .resume-text { flex-direction: column; align-items: flex-start; }
+    .resume-actions { margin-top: 8px; }
+}
+
+@media (min-width: 601px) {
+    /* keep stacked layout but allow a slightly larger thumbnail */
+    .resume-text { width: 100%; }
+    .resume-preview { height: 88vh; max-height: none; }
+    .resume-preview .resume-iframe { height: 325px; max-height: none; }
+    .resume-link img { max-width: 130px; }
+}
 
 /* Resume Link Styling */
 .resume-link, .contact-info a {
@@ -611,5 +665,14 @@ footer {
     footer {
         font-size: 0.9rem;
         margin-top: 20px;
+    }
+}
+
+/* iPhone-specific heading scale: apply larger heading only on small screens */
+@media only screen and (max-width: 480px) {
+    .resume-text h2,
+    #resume h2 {
+        font-size: clamp(3rem, 7.5vw, 6rem);
+        line-height: 1.02;
     }
 }
