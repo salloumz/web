@@ -1,19 +1,14 @@
-/* Navbar styling */
-.navbar {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    padding: 10px 0;
-    background: transparent;
-}
-
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
 :root {
     --bg-color: #000;
     --accent: #ffcc00;
-    --muted-white: rgba(255,255,255,0.95);
-    --max-width: 1200px;
+    --muted-white: rgba(255, 255, 255, 0.95);
+    --max-width: 800px;
+    --gutter: 5vw;
+    --font-display: "span", Georgia, serif;
+    --font-body: "antipoda-variable", system-ui, sans-serif;
 }
 
 *,
@@ -22,13 +17,103 @@
     box-sizing: border-box;
 }
 
+/* ==========================================================================
+   Base
+   ========================================================================== */
+html {
+    height: 100%;
+    /* The page scroller lives on <html>, so snapping is declared here.
+       "proximity" (not "mandatory") so tall sections stay freely scrollable. */
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+    /* Paint the backdrop on the root so the negative z-index particle layer
+       is never covered by the <body> background box. */
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--muted-white);
+    background: transparent;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Skip link — only visible once focused */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: #000;
+    font-family: var(--font-display);
+    font-style: normal;
+    text-decoration: none;
+    border-radius: 0 0 5px 0;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+/* ==========================================================================
+   Particles backdrop
+   ========================================================================== */
+#particles-js {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* avoids the mobile URL-bar resize jump */
+    z-index: -1;
+    pointer-events: none; /* allow clicks through particles */
+}
+
+#particles-js canvas {
+    display: block;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 10px 0;
+    /* Soft scrim keeps the links legible over scrolling content */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
 .navbar .container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    max-width: var(--max-width);
-    margin: 0 auto;
-
+    max-width: none;
+    /* Share the same gutter as the page sections so nav and hero line up */
+    padding: 0 var(--gutter);
+    margin: 0;
 }
 
 .navbar-menu {
@@ -40,78 +125,52 @@
 }
 
 .navbar-link {
-    font-family: "span", serif;
-    color: white;
+    font-family: var(--font-display);
+    color: #fff;
     text-decoration: none;
     font-size: clamp(1rem, 1.6vw, 1.6rem);
     padding: 6px 12px;
-}
-
-.navbar-link:hover {
-    background-color: #ffcc00;
-    color: black;
     border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-
-/* Body and Background */
-/* Enable scroll snapping */
-html, body {
-    height: 100%;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-    -webkit-font-smoothing: antialiased;
+.navbar-link:hover,
+.navbar-link:focus-visible {
+    background-color: var(--accent);
+    color: #000;
 }
 
-body {
-    font-family: "antipoda-variable", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--muted-white);
-    overflow-x: hidden;
-    background-color: var(--bg-color);
-    position: relative;
+.navbar-link[aria-current="page"] {
+    color: var(--accent);
 }
 
-/* Fullscreen Particles Container */
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background-size: cover;
-    pointer-events: none; /* allow clicks through particles */
+.navbar-link[aria-current="page"]:hover,
+.navbar-link[aria-current="page"]:focus-visible {
+    color: #000;
 }
 
-/* Header and Hero Section Styling */
+/* ==========================================================================
+   Hero
+   ========================================================================== */
 header {
     position: relative;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    text-align: left;
     scroll-snap-align: start;
-    padding: 8vh 5vw; /* keep content away from edges */
+    padding: 8vh var(--gutter);
 }
 
 .hero {
     position: relative;
     width: 100%;
-    min-height: 60vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 5%;
 }
 
-/* Name Container */
 .name-container {
     position: relative;
     margin: 0;
@@ -124,328 +183,155 @@ header {
     font-style: italic;
     background: transparent;
     line-height: 0.95;
+    margin: 0;
 }
 
 .name-text .intro {
-    
-    color: #FFFFFF;
-    font-family: "antipoda-variable", sans-serif;
+    color: #fff;
+    font-family: var(--font-body);
     font-variation-settings: "wdth" 90, "wght" 300;
     font-style: normal;
-    
 }
 
 .name-text .highlight {
-    
-    font-family: "span", serif;
+    font-family: var(--font-display);
     font-weight: 400;
     font-style: italic;
-    font-size: 7rem;
-    
+    /* Relative to .name-text so it scales instead of overflowing narrow screens */
+    font-size: 1.15em;
 }
 
-.subtitle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* Section Styling */
+/* ==========================================================================
+   Sections + reveal on scroll
+   ========================================================================== */
 .section {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    scroll-snap-align: start;
+    padding: 6vh var(--gutter);
+}
+
+/* Sections only start hidden when JS is present to reveal them again */
+.js-reveal .section {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    scroll-snap-align: start;
-    padding: 6vh 4vw;
 }
 
-.section.visible {
+.js-reveal .section.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
 .container {
-    max-width: 800px;
+    width: 100%;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
-.about-me,
-.aboutme,
+/* ==========================================================================
+   About
+   ========================================================================== */
 #about-me {
-    
-    width: 100%;
-    min-height: 100vh;
     display: block;
-    padding: 8vh 5vw;
-    background-color: transparent;
-    color: var(--muted-white);
-    position: relative;
+    padding: 8vh var(--gutter);
 }
 
 .about-title {
-    
     margin-top: 0;
-    font-family: "span", serif;
+    font-family: var(--font-display);
     text-align: left;
     font-size: clamp(2rem, 5vw, 4.2rem);
     font-weight: bold;
-    position: relative;
-
+    line-height: 1.1;
 }
 
 .about-textbox {
     margin-top: 20px;
-    max-width: 900px;
     padding: 8px 0;
-    background-color: transparent;
     text-align: left;
-    position: relative;
 }
 
 .about-text {
     font-size: clamp(1rem, 1.8vw, 1.35rem);
     line-height: 1.8;
     font-style: normal;
-}
-
-.resume-preview {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    margin: 8px auto 0 auto;
-    /* increase preview height so more of the PDF is visible */
-    height: 92vh; /* desktop: taller */
-    max-height: none;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-.resume-preview .resume-iframe {
-    width: 100%;
-    height: 92vh;
-    max-height: none; /* match container */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-#contactme .container {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    text-align: left;
-}
-
-#contactme h2 {
-    
-    font-family: "span", serif;
-    font-size: 4rem;
-    font-weight: bold;
-    font-style: italic;
-    background: #FFFFFF;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
     margin: 0;
 }
 
-#contactme p {
-    font-size: 1.4rem; /* Match the subtitle size */
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-#contact-page h2 {
-    
-    font-family: "span", serif;
-    font-size: 4rem;
-    font-weight: bold;
-    font-style: italic;
-    background: #FFFFFF;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    margin: 0;
-}
-
-/* Contact Info */
-.contact-info {
-    list-style: none;
-    margin-top: 20px;
-    padding: 0;
-}
-
-.contact-info li {
-    margin: 10px 0;
-}
-
-.contact-info a {
-    color: #ff0066;
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    text-decoration: underline;
-}
-
-/* Scroll Down Indicator Styling */
-.scroll-indicator {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 1000;
-    color: #fff;
-    font-family: 'utopia-std', serif;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 1;
-    visibility: visible; 
-}
-
-.scroll-indicator.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: none; /* Ensure this delay is here to allow the opacity to fade before hiding */
-}
-
-/* Arrow Style */
-.scroll-indicator .arrow {
-    margin-top: 5px;
-    width: 20px;
-    height: 20px;
-    border-right: 2px solid #FFFFFF;
-    border-bottom: 2px solid #FFFFFF;
-    transform: rotate(45deg);
-    animation: bounce 1s infinite;
-    color: #FFFFFF
-}
-
-/* Fade in/out effect */
-@keyframes fade {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
-/* Arrow bounce animation */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0) rotate(45deg);
-    }
-    50% {
-        transform: translateY(10px) rotate(45deg);
-    }
-}
-
-/* Resume Section Styling - make responsive and avoid absolute positioning */
+/* ==========================================================================
+   Resume
+   ========================================================================== */
 #resume {
     position: relative;
-    min-height: 100vh;
     display: block;
-    padding: 6vh 5vw;
+    padding: 6vh var(--gutter);
     z-index: 1;
-    scroll-snap-align: start;
+    /* Taller than the viewport — opting out of snapping keeps the bottom reachable */
+    scroll-snap-align: none;
 }
 
-/* layout container specific to resume; use flex to position text + preview */
 .resume-container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
     width: 100%;
+    max-width: 900px;
 }
 
-.resume-text {
-    width: 100%;
-    max-width: 640px;
-    padding-right: 0;
-}
-
-/* Resume heading — controlled by #resume h2 (original styling restored below) */
-
-/* Put heading and download thumbnail side-by-side */
 .resume-text {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    width: 100%;
 }
 
-.resume-text h2 { margin: 0; }
-
-/* Restoring original #resume heading style from initial file */
 #resume h2 {
-    font-family: "span", serif;
-    font-size: 4rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: bold;
     font-style: italic;
-    background: #FFFFFF;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-}
-#resume p {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 10px;
+    color: var(--muted-white);
+    line-height: 1.1;
+    margin: 0;
 }
 
-.resume-link {
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 60px;
-}
-
-.resume-link img {
-    width: auto; /* let max-width control size */
-    max-width: 150px; /* desktop cap */
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-}
-
-/* Resume actions (download thumbnail + view button) */
 .resume-actions {
     display: flex;
     gap: 12px;
     align-items: center;
+    flex-shrink: 0;
 }
+
 .resume-download {
     display: inline-block;
     background-color: #fff;
-    padding: 6px;
+    padding: 4px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.resume-download:hover,
+.resume-download:focus-visible {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.resume-download img {
+    display: block;
+    width: 70px;
+    max-width: 100%;
+    height: auto;
     border-radius: 6px;
 }
-.resume-download img { display: block; max-width: 70px; height: auto; border-radius: 6px; }
-.resume-download { padding: 4px; }
-
-.resume-link:hover {
-    background-color: #ffcc00;
-    color: aliceblue;
-}
-
 
 .resume-preview {
     position: relative;
     width: 100%;
-    max-width: 900px;
-    margin: 8px auto 0 auto;
-    /* increase preview height so more of the PDF is visible */
-    max-height: 1000px; /* desktop: taller */
+    height: min(90vh, 1000px);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -454,226 +340,249 @@ header {
 .resume-preview .resume-iframe {
     width: 100%;
     height: 100%;
-    max-height: 1000px; /* match container */
     border: 1px solid #ccc;
     border-radius: 8px;
-}
-/* duplicate old iframe rules removed (now using responsive rules above) */
-
-/* Ensure sections are visible on small devices even if JS visibility toggles don't run */
-@media (max-width: 600px) {
-    .section {
-        opacity: 1;
-        transform: none;
-        padding: 4vh 4vw;
-    }
-    .resume-container { flex-direction: column; }
-    .resume-text, .resume-preview { width: 100%; max-width: 100%; }
-    .resume-preview { display: flex; height: 82vh; max-height: none; }
-    .resume-preview .resume-iframe { height: 300px; max-height: none; }
-    /* make download button smaller and reduce padding on small screens */
-    .resume-link { padding: 6px 10px; margin-top: 18px; }
-    .resume-link img { max-width: 90px; }
-    .resume-download img { max-width: 90px; }
-    .resume-view { padding: 6px 10px; }
-
-    /* Stack heading and thumbnail on small screens */
-    .resume-text { flex-direction: column; align-items: flex-start; }
-    .resume-actions { margin-top: 8px; }
+    background: #fff;
 }
 
-@media (min-width: 601px) {
-    /* keep stacked layout but allow a slightly larger thumbnail */
-    .resume-text { width: 100%; }
-    .resume-preview { height: 88vh; max-height: none; }
-    .resume-preview .resume-iframe { height: 325px; max-height: none; }
-    .resume-link img { max-width: 130px; }
-}
-
-/* Resume Link Styling */
-.resume-link, .contact-info a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #FFFFFF;
-    color: #fff;
+/* Shown instead of the embed where PDFs will not render inline (most mobile browsers) */
+.resume-fallback {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 18px 20px;
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: 1.1rem;
+    text-align: center;
     text-decoration: none;
-    border-radius: 5px;
-}
-
-.resume-link:hover, .contact-info a:hover {
-    background-color: #ffcc00;
     color: #000;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
 }
 
-.linkedin img {
-    width: 150px;
-    height: 130px;
+.resume-fallback:hover,
+.resume-fallback:focus-visible {
+    background-color: var(--accent);
 }
 
-.email img {
-    width: 150px;
-    height: 130px;
-}
-
-.contact-buttons {
+/* ==========================================================================
+   Scroll indicator
+   ========================================================================== */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+    color: #fff;
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: 1rem;
     display: flex;
-    flex-direction: row;  
-    justify-content: left;  
-    align-items: center;  
-    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.contact-link {
-    background-color: #ff0066;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+.scroll-indicator.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
-.contact-link:hover {
-    background-color: #ffcc00;
+.scroll-indicator .arrow {
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+    animation: bounce 1s infinite;
 }
 
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(10px) rotate(45deg);
+    }
+}
+
+/* ==========================================================================
+   Contact page
+   ========================================================================== */
 .contact-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    /* Top padding clears the fixed navbar */
+    padding: 140px var(--gutter) 80px;
     text-align: center;
 }
 
 .main-heading {
-    font-family: "span", serif;
+    font-family: var(--font-display);
     font-size: clamp(2rem, 8vw, 6rem);
     color: var(--muted-white);
-    margin-bottom: 20px;
+    line-height: 1.1;
+    margin: 0 0 20px;
 }
 
 .intro-text {
-    font-family: "span", serif;
+    font-family: var(--font-display);
     font-size: clamp(1rem, 2.2vw, 1.6rem);
     color: var(--muted-white);
-    margin-bottom: 60px;
+    margin: 0 0 60px;
 }
 
 .section-divider {
-    border: none; 
+    border: none;
     height: 2px;
-    background-color: #FFFFFF;
+    background-color: #fff;
     margin: 20px 0;
     width: 100%;
 }
 
 .contact-section {
-    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     width: 100%;
+    text-align: left;
 }
 
-.contact-section h2, .contact-section p {
-    margin: 0; 
+.contact-section h2,
+.contact-section p {
+    margin: 0;
     padding: 10px;
 }
 
 .contact-section h2 {
-    font-family: "span", serif;
-    font-size: 36px;
-    color: #FFFFFF;
-    display: inline-block;
-    margin-bottom: 10px;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
+    color: #fff;
+    line-height: 1.2;
 }
 
-.email-link, .social-link {
-    font-family: "span", serif;
-    font-size: 20px;
-    color: #FFFFFF;
+.email-link,
+.social-link {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #fff;
     text-decoration: none;
     display: inline-block;
-    margin: 10px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    word-break: break-word;
 }
 
-footer {
-    font-family: "span", serif;
-    font-size: 16px;
-    color: #FFFFFF;
-    margin-top: 40px;
+.email-link:hover,
+.email-link:focus-visible,
+.social-link:hover,
+.social-link:focus-visible {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
-/* Global mobile optimizations */
-@media only screen and (max-width: 393px) and (orientation: portrait)
- {
-    
-    /* General body and container adjustments */
-    body {
-        font-size: 14px; /* Smaller base font size */
-        padding: 0 10px; /* Prevent content from touching edges */
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 700px) {
+    /* Mobile browsers render PDF iframes blank — swap in a direct link */
+    .resume-preview {
+        height: auto;
     }
 
-    .container {
-        width: 100%;
-        padding: 0 10px; /* Breathing space for mobile */
+    .resume-preview .resume-iframe {
+        display: none;
     }
 
-    /* Navbar adjustments */
-    .navbar .container {
-        flex-direction: row;
-        align-items: center; /* Center navbar links */
+    .resume-fallback {
+        display: flex;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --gutter: 6vw;
     }
 
-    .navbar-menu {
-        flex-direction: row;
-        gap: 10px; /* Stack links vertically with space */
+    .section {
+        padding: 4vh var(--gutter);
+    }
+
+    .resume-text {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .resume-actions {
+        margin-top: 8px;
+    }
+
+    .resume-download img {
+        width: 90px;
     }
 
     .navbar-link {
-        font-size: 1rem; /* Smaller font size for mobile */
-        padding: 10px 20px; /* Increase tap area for links */
-    }
-
-    /* Hero section (main name and intro text) */
-    .name-container {
-        top: 30%;
-    }
-
-    .name-text {
-        font-size: 3rem; /* Reduce main heading size */
-    }
-
-    .name-text .highlight {
-        font-size: 4rem; /* Adjust highlighted text size */
-    }
-
-    .intro {
-        font-size: 1.2rem; /* Adjust subtitle size */
-    }
-    
-
-    /* Scroll indicator adjustments */
-    .scroll-indicator {
         font-size: 1rem;
+        padding: 10px 14px; /* larger tap target */
+    }
+
+    .contact-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .contact-section h2,
+    .contact-section p {
+        padding: 6px 0;
+    }
+
+    .contact-container {
+        padding-top: 120px;
+    }
+
+    .scroll-indicator {
+        font-size: 0.9rem;
     }
 
     .scroll-indicator .arrow {
         width: 15px;
         height: 15px;
     }
-
-    /* Footer adjustments */
-    footer {
-        font-size: 0.9rem;
-        margin-top: 20px;
-    }
 }
 
-/* iPhone-specific heading scale: apply larger heading only on small screens */
-@media only screen and (max-width: 480px) {
-    .resume-text h2,
-    #resume h2 {
-        font-size: clamp(3rem, 7.5vw, 6rem);
-        line-height: 1.02;
+/* ==========================================================================
+   Motion preferences
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .js-reveal .section {
+        opacity: 1;
+        transform: none;
     }
 }
